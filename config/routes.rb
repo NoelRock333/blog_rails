@@ -4,14 +4,14 @@ Rails.application.routes.draw do
 
   resources :articulos
 =begin
-    get '/articulos'
-    post '/articulos'
-    delete '/articulos'
-    get '/articulos/:id'
-    get '/articulos/new'
-    get '/articulos/:id/edit'
-    patch '/articulos/:id'
-    put '/articulos/:id'
+    get '/articulos'  index
+    post '/articulos'  create
+    delete '/articulos'  delete
+    get '/articulos/:id'  show
+    get '/articulos/new'  new
+    get '/articulos/:id/edit'  edit
+    patch '/articulos/:id'  update
+    put '/articulos/:id'  update
 =end
 
   root 'welcome#index'
