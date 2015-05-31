@@ -22,7 +22,8 @@ class ArticulosController < ApplicationController
 
 	#POST /articulos
 	def create
-		@articulo = Articulo.new(titulo: params[:articulo][:titulo], cuerpo: params[:articulo][:cuerpo])
+		@articulo = Articulo.new(params[:articulo]) #Se lo pasamos directamente porque el hash tiene la misma estructura { titulo: "Titulo", cuerpo: "Cuerpo"}
+		
 		#Tambien podriamos usar el metodo @articulo.valid? o @articulo.invalid?
 		#Si no se puede guardar el articulo, se vuelve a mostrar la vista new
 		if @articulo.save
@@ -32,9 +33,16 @@ class ArticulosController < ApplicationController
 		end
 	end
 
+	#DELETE /articulos/:id
 	def destroy
 		@articulo = Articulo.find(params[:id])
 		@articulo.destroy #Destroy elimina el articulo de la Base de Datos
 		redirect_to articulos_path
 	end
+
+	#PUT /articulos/:id
+	def update
+		#@articulo.update_attributes({ titulo: "Nuevo titulo" })
+	end
+
 end
