@@ -47,6 +47,12 @@ class ArticulosController < ApplicationController
 	#PUT /articulos/:id
 	def update
 		#@articulo.update_attributes({ titulo: "Nuevo titulo" })
+		@articulo = Articulo.find(params[:id])
+		if @articulo.update(articulo_params)
+			redirect_to @articulo
+		else
+			render :edit
+		end
 	end
 
 	private
