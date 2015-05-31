@@ -2,7 +2,7 @@
 
 <h1><%= articulo.titulo %></h1>
 <div>
-	<%= articulo.cuerpo %>
+	<%= articulo.cuerpo %> - <%= link_to "Eliminar", articulo, method: :delete %>
 </div>
 
 <%end%>

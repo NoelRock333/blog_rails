@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 =begin
     get '/articulos'  index
     post '/articulos'  create
-    delete '/articulos'  delete
+    delete '/articulos/:id'  destroy
     get '/articulos/:id'  show
     get '/articulos/new'  new
     get '/articulos/:id/edit'  edit
