@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'especial', to: 'welcome#index' #Podemos crear rutas personalizadas apuntando a un controlador y accion especificandolas despues del to:
+
+  resources :articulos
+=begin
+    get '/articulos'
+    post '/articulos'
+    delete '/articulos'
+    get '/articulos/:id'
+    get '/articulos/new'
+    get '/articulos/:id/edit'
+    patch '/articulos/:id'
+    put '/articulos/:id'
+=end
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
