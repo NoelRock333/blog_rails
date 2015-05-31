@@ -1,0 +1,19 @@
+<div style="width:80%; margin:0 auto;">
+	<h1>Editar artículo</h1>
+	<%= form_for(@articulo) do |f| %>
+		<% @articulo.errors.full_messages.each do |mensaje| %>
+			<div class="be-red white">
+				*<%= mensaje %>
+			</div>
+		<%end%>
+		<div class="field">
+			<%= f.text_field :titulo, placeholder: "Título", class:"form-control" %>
+		</div>
+		<div class="field">
+			<%= f.text_area :cuerpo, placeholder: "Escribe aquí el artículo", style: "height:250px", class:"form-control" %>
+		</div>
+		<div class="field">
+			<%= f.submit "Guardar", class:"btn" %>
+		</div>
+	<%end%>
+</div>

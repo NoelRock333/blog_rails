@@ -15,6 +15,10 @@ class ArticulosController < ApplicationController
 		#Articulo.where.not(" id = 1 ") #Nos debe traer todos los articulos que tengan id diferente de 1
 	end
 
+	def edit
+		@articulo = Articulo.find(params[:id])
+	end
+
 	#GET /articulos/new
 	def new
 		@articulo = Articulo.new #Crea una instancia del modelo Articulo
