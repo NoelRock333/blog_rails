@@ -1,6 +1,11 @@
 <div style="width:80%; margin:0 auto;">
 	<h1>Crear artículo</h1>
 	<%= form_for(@articulo) do |f| %>
+		<% @articulo.errors.full_messages.each do |mensaje| %>
+			<div class="be-red white">
+				*<%= mensaje %>
+			</div>
+		<%end%>
 		<div class="field">
 			<%= f.text_field :titulo, placeholder: "Título", class:"form-control" %>
 		</div>
