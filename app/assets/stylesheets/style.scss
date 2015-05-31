@@ -10,10 +10,32 @@ html, body{
 .white{
 	color: #FFF;
 }
+.no-list{
+	list-style: none;
+}
 
 .large-padding{
 	padding: 8px 7px;
 }
 .no-margin{
 	margin:0px;
+}
+.form-control{
+	border:none;
+	border-bottom: 1px solid;
+	outline: none;
+	width:100%;
+	display: block;
+	padding: 10px 0px;
+	font-size: 1.2em;
+}
+.btn{
+	border: none;
+	outline: none;
+	text-transform: uppercase;
+	cursor: pointer;
+	padding: 5px 10px;
+	background-color: rgb(200,50,50);
+	color: white;
+	font-style: 1.2em;
 }
