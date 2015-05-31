@@ -1,3 +1,4 @@
+<% name ||= "Crear" %>
 <h1><%= name %> artículo</h1>
 <%= form_for(@articulo) do |f| %>
 	<% @articulo.errors.full_messages.each do |mensaje| %>
