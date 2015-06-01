@@ -1,0 +1,49 @@
+rails new blog
+rails generate controller welcome index //Genera controlador welcome con accion index
+rails generate model Article title:string body:text visit_count:integer //Genera un modelo con campos
+//Configurar el archivo database.yml
+rake db:create   //Crea base de datos
+rake db:migrate  //Aplica los cambios de los campos a la base de datos
+rake db:rollback //Revierte el ultimo cambio de estructura aplicado a la base de datos como una pila
+rake db:update   //Regresa a la migracion mas nueva
+
+rails console    //Abre una consola de rails
+>Article.all     //Regresa un SELECT * de la tabla Articles
+>Article.find(1) //Busca el articulo con el id=1
+
+Rutas:
+get 'especial', to: 'welcome#index' //Podemos crear rutas personalizadas apuntando a un controlador y accion especificandolas despues del to:
+resources :articles, except: [:delete]       //Vas a crear rutas para todo exepto para eliminar
+resources :articles, only: [:create, :show]  //Vas a crear rutas solo para crear y mostrar
+//cada ruta creada automaticamente tiene una acción asociada por defecto
+//Con el simple hecho de que un modelo herede de la clase ActiveRecord, los modelos ya tienen muchos metodos por defecto
+//Para pasar datos a la vista se usan variables de clase y son las que comienzan con un '@'
+<%= @articulos.inspect %>  //Permite inspeccionar una variable
+
+//Con esto creamos un articulo desde consola
+>Articles.create( title:"Primer articulo", body: "Bienvenidos a mi blog", visit_count: 0)
+
+//En una vista podemos poner esto pero solo sirve para un articulo, si queremos mejorarlo hay que hacer un .each
+<h1><%= @article.title %></h1>
+
+//Un campo de un formulario recive 3 parametros que son <%= f.tipo identificador, elementos extra %>
+<%= f.text_area :body, placeholder: "Escribe aquí el artículo" , class:"form-control" %>
+//o usando llaves (cosa que rails entiende sin que le digas)
+<%= f.text_area :body, {placeholder: "Escribe aquí el artículo" , class:"form-control"} %>
+
+//Las tablas creadas con migraciones, ya tienen el campo id por defecto y es autoincrementable
+
+
+>Article.all.count                          //Nos devuelve el numero de registros
+>Article.find_by(title:"Segundo articulo")  //Busca articulos por titulo pero solo regresa UNO
+>Article.where("title LIKE ?","%articulo%") //Nos regresa todos los articulos que contengan la palabra "articulo", estamos sustituyendo la variable por un signo "?"
+>Article.where("title LIKE ?","%articulo%").count //Nos devuelve el numero de articulos que contengan la palabra "articulo"
+
+//Los nombres de las vistas parciales siempre comienzan con un guion bajo  "_vista"
+rails generate devise:install	//Usa el generador de devise para instalarse en la aplicacion
+rails g devise User 			//Genera una migración de un modelo para los usuarios
+rake db:migrate					//Ejecutamos la migración
+
+
+rails destroy controller welcome //Elimina controlador welcome
+rails destroy model Article //Elimina modelo Article
