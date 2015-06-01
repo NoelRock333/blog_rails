@@ -1,0 +1,29 @@
+<header>
+	<nav class="be-red white large-padding">
+		<ul class="no-list row center-xs middle-xs">
+			<li class="col-md">
+				<h1 class="no-margin">Blog Noel</h1>
+			</li>
+			<li class="col-md">
+				<%= link_to "Inicio", root_path %>
+			</li>
+			<li class="col-md">
+				<%= link_to "Diseño", root_path %>
+			</li>
+			<li class="col-md">Programacion</li>
+			<li class="col-md">Tecnologia</li>
+			<% if usuario_signed_in? %>
+				<li class="col-md">
+					<%= link_to "Cerrar sesión", destroy_usuario_session_path, method: :delete %>
+				</li>
+			<%else%>
+				<li class="col-md">
+					<%= link_to "Iniciar sesión", new_usuario_session_path %>
+				</li>
+				<li class="col-md">
+					<%= link_to "Crear cuenta", new_usuario_registration_path %>
+				</li>
+			<%end%>
+		</ul>
+	</nav>
+</header>

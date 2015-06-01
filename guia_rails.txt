@@ -43,7 +43,8 @@ resources :articles, only: [:create, :show]  //Vas a crear rutas solo para crear
 rails generate devise:install	//Usa el generador de devise para instalarse en la aplicacion
 rails g devise User 			//Genera una migración de un modelo para los usuarios
 rake db:migrate					//Ejecutamos la migración
-
+rails g devise:views			//Nos crea las vistas de devise en el proyecto para poder modificarlas
 
 rails destroy controller welcome //Elimina controlador welcome
 rails destroy model Article //Elimina modelo Article
+rake routes  //Te muestra todos los paths de la aplicación pero para ponerlos en un link_to hay que agregarles al final "_path"

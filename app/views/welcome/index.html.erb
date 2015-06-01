@@ -1,12 +1,4 @@
-<h1>Hola de nuevo</h1>
-<p>Renombrado el equivocado</p>
-
-<h2>Iterando un faken arreglo</h2>
-<% [1,2,3,4].each do |number| %>
-<p>Numero: <%= number * 2 %></p>
-<% end %>
-<%= [1,2,3,4] %>
-
-<h2>Imprimiendo una variable</h2>
-<% nombre = "noel" %>
-<%= "Hola #{nombre}" %>
+<%if usuario_signed_in? %>
+<h1>Bienvenido <%= current_usuario.email %></h1>
+<%end%>
+<%= link_to "Mis ejemplos", welcome_ejemplos_path %>
