@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :usuarios
   get 'especial', to: 'welcome#index' #Podemos crear rutas personalizadas apuntando a un controlador y accion especificandolas despues del to:
 
   resources :articulos
