@@ -51,6 +51,9 @@ rake db:migrate														//Ejecuta la migración anterior
 >Articulo.last.usuario 		//Trae el usuario asociado al ultimo articulo
 unless 						//es como si escribieramos "if not" y quiere decir, "A menos que"
 
+
+//En el controlador no hay before_create ni before_validation ni ninguno de esos, solo se pueden usar before_action o before_filter(antes de rails 4) 
+
 rails destroy controller welcome //Elimina controlador welcome
 rails destroy model Article //Elimina modelo Article
 rake routes  //Te muestra todos los paths de la aplicación pero para ponerlos en un link_to hay que agregarles al final "_path"

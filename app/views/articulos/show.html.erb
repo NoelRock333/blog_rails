@@ -2,6 +2,7 @@
 <% unless @articulo.usuario.nil? %>
 <p>Escrito por: <%= @articulo.usuario.email %></p>
 <%end%>
+<p>Visitas: <%= @articulo.contador_visitas %></p>
 <div>
 	<%= @articulo.cuerpo %>
 </div>
