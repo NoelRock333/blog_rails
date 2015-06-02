@@ -45,6 +45,12 @@ rails g devise User 			//Genera una migración de un modelo para los usuarios
 rake db:migrate					//Ejecutamos la migración
 rails g devise:views			//Nos crea las vistas de devise en el proyecto para poder modificarlas
 
+rails generate migration add_user_id_to_articles user:references	//Crea la referencia del la tabla usuarios con articulos, creando un campo user_id en la tabla de articulos
+rake db:migrate														//Ejecuta la migración anterior
+
+>Articulo.last.usuario 		//Trae el usuario asociado al ultimo articulo
+unless 						//es como si escribieramos "if not" y quiere decir, "A menos que"
+
 rails destroy controller welcome //Elimina controlador welcome
 rails destroy model Article //Elimina modelo Article
 rake routes  //Te muestra todos los paths de la aplicación pero para ponerlos en un link_to hay que agregarles al final "_path"

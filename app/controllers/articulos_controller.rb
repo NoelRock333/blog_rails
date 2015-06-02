@@ -26,7 +26,7 @@ class ArticulosController < ApplicationController
 
 	#POST /articulos
 	def create
-		@articulo = Articulo.new(articulo_params) #Se lo pasamos directamente porque el hash tiene la misma estructura { titulo: "Titulo", cuerpo: "Cuerpo"}
+		@articulo = current_usuario.articulos.new(articulo_params) #Se lo pasamos directamente porque el hash tiene la misma estructura { titulo: "Titulo", cuerpo: "Cuerpo"}
 		
 		#Tambien podriamos usar el metodo @articulo.valid? o @articulo.invalid?
 		#Si no se puede guardar el articulo, se vuelve a mostrar la vista new
