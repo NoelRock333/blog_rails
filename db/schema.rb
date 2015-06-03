@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602190140) do
+ActiveRecord::Schema.define(version: 20150603182158) do
 
   create_table "articulos", force: :cascade do |t|
     t.string   "titulo",           limit: 255
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20150602190140) do
   end
 
   add_index "articulos", ["usuario_id"], name: "index_articulos_on_usuario_id", using: :btree
+
+  create_table "comentarios", force: :cascade do |t|
+    t.integer  "usuario_id",  limit: 4
+    t.integer  "articulo_id", limit: 4
+    t.text     "cuerpo",      limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "comentarios", ["articulo_id"], name: "index_comentarios_on_articulo_id", using: :btree
+  add_index "comentarios", ["usuario_id"], name: "index_comentarios_on_usuario_id", using: :btree
 
   create_table "usuarios", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -45,4 +56,6 @@ ActiveRecord::Schema.define(version: 20150602190140) do
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "articulos", "usuarios"
+  add_foreign_key "comentarios", "articulos"
+  add_foreign_key "comentarios", "usuarios"
 end

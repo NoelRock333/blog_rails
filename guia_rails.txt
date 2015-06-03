@@ -57,3 +57,4 @@ unless 						//es como si escribieramos "if not" y quiere decir, "A menos que"
 rails destroy controller welcome //Elimina controlador welcome
 rails destroy model Article //Elimina modelo Article
 rake routes  //Te muestra todos los paths de la aplicación pero para ponerlos en un link_to hay que agregarles al final "_path"
+rails generate scaffold Comment user:references article:references body:text 	//Genera la migracion de la tabla comentarios y agrega la relación con usuario y articulo y al final le agrega un campo cuerpo del comentario (hay que correr rake db:migrate despues)
