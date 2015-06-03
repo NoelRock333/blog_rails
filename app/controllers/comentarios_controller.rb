@@ -1,6 +1,6 @@
 class ComentariosController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_comentario, only: [:show, :edit, :update, :destroy]
-
   # GET /comentarios
   # GET /comentarios.json
   def index
