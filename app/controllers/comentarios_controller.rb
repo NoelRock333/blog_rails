@@ -1,34 +1,17 @@
 class ComentariosController < ApplicationController
   before_action :authenticate_usuario!
+  before_action :set_articulo
   before_action :set_comentario, only: [:show, :edit, :update, :destroy]
-  # GET /comentarios
-  # GET /comentarios.json
-  def index
-    @comentarios = Comentario.all
-  end
-
-  # GET /comentarios/1
-  # GET /comentarios/1.json
-  def show
-  end
-
-  # GET /comentarios/new
-  def new
-    @comentario = Comentario.new
-  end
-
-  # GET /comentarios/1/edit
-  def edit
-  end
 
   # POST /comentarios
   # POST /comentarios.json
   def create
-    @comentario = Comentario.new(comentario_params)
+    @comentario = current_usuario.comentarios.new(comentario_params)
+    @comentario.articulo = @articulo #Con esto le decimos que el articulo es el de la URL
 
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to @comentario, notice: 'Comentario was successfully created.' }
+        format.html { redirect_to @comentario.articulo, notice: 'Comentario was successfully created.' }
         format.json { render :show, status: :created, location: @comentario }
       else
         format.html { render :new }
@@ -42,7 +25,7 @@ class ComentariosController < ApplicationController
   def update
     respond_to do |format|
       if @comentario.update(comentario_params)
-        format.html { redirect_to @comentario, notice: 'Comentario was successfully updated.' }
+        format.html { redirect_to @comentario.articulo, notice: 'Comentario was successfully updated.' }
         format.json { render :show, status: :ok, location: @comentario }
       else
         format.html { render :edit }
@@ -56,12 +39,15 @@ class ComentariosController < ApplicationController
   def destroy
     @comentario.destroy
     respond_to do |format|
-      format.html { redirect_to comentarios_url, notice: 'Comentario was successfully destroyed.' }
+      format.html { redirect_to @articulo, notice: 'Comentario was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    def set_articulo
+      @articulo = Articulo.find(params[:articulo_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_comentario
       @comentario = Comentario.find(params[:id])

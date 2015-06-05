@@ -9,6 +9,13 @@
 <div class="field">
 	<h3>Comentarios</h3>
 	<%= render "comentarios/form" %>
+	<ul>
+		<% @articulo.comentarios.each do |comentario| %>
+			<li>
+				<%= comentario.cuerpo %> - <%= comentario.usuario.email %>
+			</li>
+		<%end%>
+	</ul>
 </div>
 <div>
 	<%= link_to "Editar", edit_articulo_path(@articulo) %>

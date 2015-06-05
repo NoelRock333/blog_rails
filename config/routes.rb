@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'welcome/ejemplos'
 
   resources :articulos do
-    resources :comentarios
+    resources :comentarios, only: [:create, :destroy, :update]
   end
 =begin
     get '/articulos'  index
