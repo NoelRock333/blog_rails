@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :comentarios
   devise_for :usuarios
   get 'especial', to: 'welcome#index' #Podemos crear rutas personalizadas apuntando a un controlador y accion especificandolas despues del to:
   get 'welcome/ejemplos'
 
-  resources :articulos
+  resources :articulos do
+    resources :comentarios
+  end
 =begin
     get '/articulos'  index
     post '/articulos'  create

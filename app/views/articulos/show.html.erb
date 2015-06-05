@@ -6,3 +6,10 @@
 <div>
 	<%= @articulo.cuerpo %>
 </div>
+<div class="field">
+	<h3>Comentarios</h3>
+	<%= render "comentarios/form" %>
+</div>
+<div>
+	<%= link_to "Editar", edit_articulo_path(@articulo) %>
+</div>

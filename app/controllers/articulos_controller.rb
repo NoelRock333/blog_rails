@@ -13,6 +13,7 @@ class ArticulosController < ApplicationController
 	#GET /articulos/:id
 	def show
 		@articulo.update_visits_count
+		@comentario = Comentario.new
 		#Where
 		#Articulo.where(" id = ? ", params[:id]) #Debe traernos el mismo resultado que la consulta de arriba
 		#Articulo.where(" cuerpo LIKE ? ", "%hola%") #Debe traernos todos los registros que contengan "hola" en el cuerpo
