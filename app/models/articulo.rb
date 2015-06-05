@@ -7,7 +7,7 @@ class Articulo < ActiveRecord::Base
 
 	def update_visits_count
 		#self.save if self.contador_visitas.nil?  #Una vez ya teniendo todos los registros con valor diferente de nil en la base de datos, ahora si podemos borrar esta linea
-		self.update(contador_visitas: self.contador_visitas + 1) #Le decimos que actualice el contador de visitas con el valor del contador de visitas mas uno
+		self.update(contador_visitas: (self.contador_visitas || 0) + 1) #Le decimos que actualice el contador de visitas con el valor del contador de visitas mas uno
 	end
 
 	private
