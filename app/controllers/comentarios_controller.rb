@@ -12,7 +12,7 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       if @comentario.save
         format.html { redirect_to @comentario.articulo, notice: 'Comentario was successfully created.' }
-        format.json { render :show, status: :created, location: @comentario }
+        format.json { render :show, status: :created, location: @comentario.articulo }
       else
         format.html { render :new }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }

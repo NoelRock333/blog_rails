@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on("ajax:success", "form#comments-form", function(ev, data){
+	console.log(data);
+	$("#comments-box").append("<li>"+data.cuerpo+"</li>");
+	$(this).find("textarea").val("");
+});
+$(document).on("ajax:error", "form#comments-form", function(ev, data){
+	console.log("error");
+	console.log(data);
+});

@@ -9,7 +9,7 @@
 <div class="field">
 	<h3>Comentarios</h3>
 	<%= render "comentarios/form" %>
-	<ul>
+	<ul id="comments-box">
 		<% @articulo.comentarios.each do |comentario| %>
 			<li>
 				<%= comentario.cuerpo %> - <%= comentario.usuario.email %>
